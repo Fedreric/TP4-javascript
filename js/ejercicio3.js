@@ -23,7 +23,7 @@ class Rectangulo{
       }
   
     mostrarPropiedades() {
-      alert(`Alto: ${this.alto}, Ancho: ${this.ancho}`);
+      alert(`Alto: ${this.alto} Ancho: ${this.ancho}`);
     }
   
     calcularPerimetro() {
@@ -39,4 +39,12 @@ class Rectangulo{
   
   let rectangulo = new Rectangulo();
 
+  document.write(`<div class='contenedor'>
+  <h1>Rectangulo</h1>
+  <button onclick="rectangulo.mostrarPropiedades()">Ver alto y ancho</button>
+  <button onclick="rectangulo.modificarAlto()">Modificar alto</button>
+  <button onclick="rectangulo.modificarAncho()">Modificar Ancho</button>
+  <button onclick="rectangulo.calcularArea()">Area</button>
+  <button onclick="rectangulo.calcularPerimetro()">Perimetro</button>
+  </div>`);
 
