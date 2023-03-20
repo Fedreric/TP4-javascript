@@ -90,3 +90,13 @@ generarTabla(listaProductos);
 document.write('<h2>Filtro de protectores solares</h2>');
 let filtroProtectorSolar = listaProductos.filter(producto => producto.categoria.includes('Protector solar'));
 generarTabla(filtroProtectorSolar);
+document.write('<h2>Busqueda de producto Sérum</h2>');
+let buscarProductoSerum = [listaProductos.find(producto => producto.categoria.includes('Sérum'))];
+generarTabla(buscarProductoSerum);
+document.write('<h2>Busqueda de producto Bruma</h2>');
+let buscarProductoBruma = [listaProductos.find(producto => producto.categoria.includes('Bruma'))];
+if(buscarProductoBruma[0] === undefined){
+ document.write('<h3>No se encontro el producto de categoria: Bruma</h3>');
+}else{
+    generarTabla(buscarProductoBruma);
+}
