@@ -70,16 +70,16 @@ class Persona {
 
         switch(generacion){
             case 'Z':
-                document.write(`${this.nombre} pertenece a la generación:<span> ${generacion}</span>y su rasgo principal es la: <span>${rasgo}</span>`);
+                document.write(`${this.nombre} pertenece a la generación:<span> ${generacion}</span> y su rasgo principal es la: <span>${rasgo}</span>`);
                 break;
             case 'Y':
-                document.write(`${this.nombre} pertenece a la generación:<span> ${generacion}</span>y su rasgo principal es la: <span>${rasgo}</span>`);
+                document.write(`${this.nombre} pertenece a la generación:<span> ${generacion}</span> y su rasgo principal es la: <span>${rasgo}</span>`);
                 break;
             case 'X':
-                document.write(`${this.nombre} pertenece a la generación:<span> ${generacion}</span>y su rasgo principal es la: <span>${rasgo}</span>`);
+                document.write(`${this.nombre} pertenece a la generación:<span> ${generacion}</span> y su rasgo principal es la: <span>${rasgo}</span>`);
                 break;
             case 'Baby Boom':
-                document.write(`${this.nombre} pertenece a la generación:<span> ${generacion}</span>y su rasgo principal es la: <span>${rasgo}</span>`);
+                document.write(`${this.nombre} pertenece a la generación:<span> ${generacion}</span> y su rasgo principal es la: <span>${rasgo}</span>`);
                 break;
             case 'Silent Generation':
                 document.write(`${this.nombre} pertenece a la generación:<span> ${generacion}</span> y su rasgo principal es la: <span>${rasgo}</span>`);
@@ -89,9 +89,22 @@ class Persona {
             break;
         }
     }
+    mayorDeEdad(){
+        if(this.edad >= 18){
+            document.write(`<p>${this.nombre} de ${this.edad} años, es mayo de edad.</p>`);
+        }else{
+            document.write(`<p>${this.nombre} de ${this.edad} años, es menor de edad.</p>`);
+        }
+    }
+    generarDNI(){
+        this.DNI = Math.floor((Math.random() * (99999999 - 10000000 + 1)) + 10000000);
+    }
 }
 
-let federico = new Persona('Federico',1940,22,43204867,'H','70Kg',1.75);
+let federico = new Persona('Federico',2000,22,43204867,'H','70Kg',1.75);
 federico.mostrarDatos();
 federico.mostrarGeneracion();
-console.log(typeof(federico.añoNacimiento));
+federico.mayorDeEdad();
+document.write(`<h2>Se genera el DNI aleatorio, precionar F5 para ver cambios</h2>`);
+federico.generarDNI();
+federico.mostrarDatos();
