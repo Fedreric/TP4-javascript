@@ -87,3 +87,6 @@ function generarTabla(lista) {
 }
 document.write(`<h1>Lista de productos</h1>`);
 generarTabla(listaProductos);
+document.write('<h2>Filtro de protectores solares</h2>');
+let filtroProtectorSolar = listaProductos.filter(producto => producto.categoria.includes('Protector solar'));
+generarTabla(filtroProtectorSolar);
