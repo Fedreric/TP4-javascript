@@ -1,8 +1,9 @@
 body{
     margin: 10px;
 }
-h1{
+h1,h2,h3{
     text-transform: uppercase;
+    text-align: center;
 }
 .contenedor{
     text-align: center;
@@ -23,4 +24,9 @@ button:hover {
   background-color: #000;
   color: #fff;
   transform: scale(1.1);
+}
+
+.contenedor table tr td{
+  border-right: 2px solid #93d092;
+  border-bottom: 2px solid #93d092;
 }
