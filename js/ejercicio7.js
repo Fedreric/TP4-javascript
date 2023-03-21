@@ -1,4 +1,3 @@
-let agenda;
 class Contacto {
     #nombre;
     #telefono;
@@ -25,12 +24,24 @@ class Agenda extends Contacto {
     set limite(newLimite) { this.#limite = newLimite; }
     set listaContactos(newContacto) { this.#listaContactos.push(newContacto) }
 
+    validacionContacto(newContacto){
+        let bandera = 0;
+        this.listaContactos.forEach(contacto => {
+            if( contacto.nombre === newContacto.nombre){
+                bandera++;
+            }
+        });
+        return bandera;
+    }
+
     aniadirContacto(contacto) {
         if (this.agendaLlena()) {
             alert('La agenda esta llena, no se pueden guardar mas contactos!');
-        } else {
+        } else if(this.validacionContacto(contacto) === 0){
             alert('Contacto agendado!');
             this.listaContactos = contacto;
+        } else {
+            alert(`${contacto.nombre} ya existe, recuerda no usar nombres iguales.`);
         }
 
     }
@@ -54,9 +65,9 @@ class Agenda extends Contacto {
             }
         });
         if(bandera === true){
-            console.log(`${contactoBuscado}: Si existe el contacto`);
+            alert(`${contactoBuscado}: Si existe el contacto`);
         }else{
-            console.log(`${contactoBuscado}: NO existe el contacto`);
+            alert(`${contactoBuscado}: NO existe el contacto`);
         }
         
     }
@@ -76,12 +87,15 @@ class Agenda extends Contacto {
         return console.log(`Huecos disponibles: ${this.limite - this.listaContactos.length}`);
     }
 }
+let agenda = new Agenda();
+
 function crearAgenda(){
  let nombreAgenda = prompt('Ingresa el nombre de la agenda');
  let limiteAgenda = parseInt(prompt('Ingresa el limite de contactos que podra almacenar la agenda (solo numeros enteros)'));
- 
- nombreAgenda = new Agenda('',0,limiteAgenda);
- agenda = nombreAgenda;
+ document.getElementById('contenedor').innerHTML =`<h1>Agenda ${nombreAgenda}</h1>`
+
+ agenda = new Agenda('',0,limiteAgenda);;
+
 }
 function agregar(agenda){
     let nombre = prompt('Ingresa el nombre del contacto');
@@ -99,7 +113,6 @@ function existe(agenda){
 }
 
 document.write(`<div class='contenedor'>
-  <h1>Agenda</h1>
   <button onclick="crearAgenda()">Crear agenda</button>
   <button onclick="agregar(agenda);">Agregar contacto</button>
   <button onclick="agenda.listarContactos();">Ver lista de contactos</button>
